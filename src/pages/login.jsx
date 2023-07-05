@@ -47,7 +47,7 @@ function Login() {
                 <button type="submit">로그인</button>
             </form>
             <p>
-                아직 회원이 아니신가요? <Link to="/signup">회원가입</Link>하세요.
+                <Link to="/signup">회원가입</Link>
             </p>
         </div>
     );

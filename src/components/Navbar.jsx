@@ -3,20 +3,20 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
     return (
-        <nav>
-            <ul>
-                <li>
-                    <Link to="/">My-blog</Link>
-                </li>
-                <li>
-                    <Link to="/login">Login/Signup</Link>
-                </li>
-                <li>
+        <nav className='nav'>
+            <h1>
+                <Link to="/">Mylog</Link>
+            </h1>
+            <div className='NewLogin'>
+                <p className='newPost'>
                     <Link to="/new">New post</Link>
-                </li>
-            </ul>
+                </p>
+                <p className='login'>
+                    <Link to="/login">Login/Signup</Link>
+                </p>
+            </div>
         </nav>
     );
 }
 
-export default Navbar;
+export default Navbar; 
