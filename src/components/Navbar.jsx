@@ -6,10 +6,13 @@ function Navbar() {
         <nav>
             <ul>
                 <li>
-                    <Link to="/">홈</Link>
+                    <Link to="/">My-blog</Link>
                 </li>
                 <li>
-                    <Link to="/new">새 글 작성</Link>
+                    <Link to="/login">Login/Signup</Link>
+                </li>
+                <li>
+                    <Link to="/new">New post</Link>
                 </li>
             </ul>
         </nav>

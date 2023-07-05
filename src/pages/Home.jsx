@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Main() {
+function Home() {
     // 가상의 게시물 데이터
     const posts = [
         { id: 1, title: '첫 번째 게시물' },
@@ -11,7 +11,7 @@ function Main() {
 
     return (
         <div>
-            <h1>블로그 타이틀</h1>
+            <h1>블로그 홈</h1>
             <ul>
                 {posts.map((post) => (
                     <li key={post.id}>
@@ -19,9 +19,8 @@ function Main() {
                     </li>
                 ))}
             </ul>
-            <Link to="/new">새 글 작성</Link>
         </div>
     );
 }
 
-export default Main;
+export default Home;
