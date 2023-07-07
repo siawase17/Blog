@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function NewPost() {
+function NewPost({ addPost }) {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        navigate(`/post/${title}`);
+        const newPost = { id: Date.now(), title, content };
+        addPost(newPost);
+        navigate(`/`);
     };
 
     const handleTitleChange = (e) => {
@@ -23,17 +25,17 @@ function NewPost() {
         <div>
             <h1>새 글 작성</h1>
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="제목"
-                    value={title}
-                    onChange={handleTitleChange}
-                />
-                <textarea
+                <p><input
+                        type="text"
+                        placeholder="제목"
+                        value={title}
+                        onChange={handleTitleChange}
+                    /></p>
+                <p><textarea
                     placeholder="본문"
                     value={content}
                     onChange={handleContentChange}
-                ></textarea>
+                ></textarea></p>
                 <button type="submit">작성</button>
             </form>
             <button onClick={() => navigate('/')}>메인 페이지로 이동</button>

@@ -12,6 +12,7 @@ body {
   align-items: center;
   background-color: #fff6fb;
   font-family: 'Gowun Dodum', sans-serif;
+  caret-color: transparent;
 }
 
 a {
