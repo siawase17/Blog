@@ -1,13 +1,15 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../AuthContext';
 
-function Signup() {
-    const navigate = useNavigate();
-    const { login } = useContext(AuthContext);
-
+function Signup({ addUser }) {
+    const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
+    const handleUseNameChange = e => {
+        setUserName(e.target.value);
+    }
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -19,16 +21,8 @@ function Signup() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        console.log('이메일:', email);
-        console.log('비밀번호:', password);
-
-        const userData = {
-            email,
-            username: '사용자 이름',
-        };
-
-        login(userData);
+        const newUser = {userName, email, password};
+        addUser(newUser);
         navigate('/login');
     };
 
@@ -36,6 +30,10 @@ function Signup() {
         <div>
             <h1>회원가입</h1>
             <form onSubmit={handleSubmit}>
+                <label>
+                    사용자 이름:
+                    <input type="name" value={userName} onChange={handleUseNameChange}/>
+                </label>
                 <label>
                     이메일:
                     <input type="email" value={email} onChange={handleEmailChange} />

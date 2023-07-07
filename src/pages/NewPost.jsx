@@ -25,17 +25,17 @@ function NewPost({ addPost }) {
         <div>
             <h1>새 글 작성</h1>
             <form onSubmit={handleSubmit}>
-                <p><input
+                <label><input
                         type="text"
                         placeholder="제목"
                         value={title}
                         onChange={handleTitleChange}
-                    /></p>
-                <p><textarea
+                    /></label>
+                <label><textarea
                     placeholder="본문"
                     value={content}
                     onChange={handleContentChange}
-                ></textarea></p>
+                ></textarea></label>
                 <button type="submit">작성</button>
             </form>
             <button onClick={() => navigate('/')}>메인 페이지로 이동</button>

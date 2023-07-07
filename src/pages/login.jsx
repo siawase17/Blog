@@ -1,35 +1,33 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../AuthContext';
 
-function Login() {
+function Login({ users, setIsLoggedIn, setCurrentUser }) {
     const navigate = useNavigate();
-    const { login } = useContext(AuthContext);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleEmailChange = (e) => {
+    const handleEmailChange = e => {
         setEmail(e.target.value);
     };
 
-    const handlePasswordChange = (e) => {
+    const handlePasswordChange = e => {
         setPassword(e.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        console.log('이메일:', email);
-        console.log('비밀번호:', password);
-
-        const userData = {
-            email,
-            username: '사용자 이름',
-        };
-
-        login(userData);
-        navigate('/');
+        const loginUser = { email, password };
+        const user = users.find((user) => user.email === loginUser.email && user.password === loginUser.password);
+        if (user) {
+            setIsLoggedIn(true);
+            setCurrentUser(user.userName);
+            navigate('/');
+        } else {
+            setIsLoggedIn(false);
+            setCurrentUser(null);
+            alert('아이디와 비밀번호를 확인해주세요.');
+        }
     };
 
     return (
