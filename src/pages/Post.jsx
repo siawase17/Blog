@@ -58,7 +58,7 @@ function Post({ posts, deletePost, isLoggedIn, currentUser, comments, setComment
 
     const handleCommentSubmit = e => {
         e.preventDefault();
-        const newComment = { user: isLoggedIn ? currentUser : '익명', content: comment };
+        const newComment = { user: isLoggedIn ? currentUser : '익명', content: comment, createdAt: new Date().toLocaleString() };
         setComments([...comments, newComment]);
         setComment('');
     };
