@@ -19,12 +19,10 @@ function Navbar({ isLoggedIn, currentUser, handleLogout }) {
                 <Link to="/">Mylog</Link>
             </h1>
             <div className='NewLogin'>
-                <p className='newPost'>
-                    <button onClick={handleNewPostClick}>New post</button>
-                </p>
+                <button className='newPost' onClick={handleNewPostClick}>New post</button>
                 {isLoggedIn ? (
                     <p className="login">
-                        <span>Logged in as {currentUser}</span>
+                        <span>{currentUser}</span>
                         <button onClick={handleLogout}>Logout</button>
                     </p>
                 ) : (

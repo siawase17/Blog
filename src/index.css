@@ -24,6 +24,7 @@ a:hover, a:active {
   color : #fbcff8;
 }
 
+/* 네브 */
 .nav {
   display: flex;
   justify-content: space-between;
@@ -32,8 +33,19 @@ a:hover, a:active {
 
 .nav .NewLogin {
   display: flex;
+  margin-top: 0.6rem;
 }
 
 .nav .newPost {
   margin-right: 2rem;
+  margin-top: 0.75rem;
+  border: none;
+  background-color: #fff6fb;
+  font-family: 'Gowun Dodum', sans-serif;
+  font-size: 1.1rem;
+  height: 2rem;
+}
+
+.nav .newPost:hover {
+  color : #fbcff8;
 }
