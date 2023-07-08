@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-function Post({ posts, deletePost }) {
+function Post({ posts, deletePost, isLoggedIn, currentUser, comments, setComments }) {
     const navigate = useNavigate();
 
     // 현재 URL의 매개변수 가져오기
     const { id } = useParams();
     // posts 배열에서 해당 id를 가진 게시물 찾기
-    const post = posts.find((post) => post.id === Number(id));
+    const [post, setPost] = useState(null);
+
+    useEffect(() => {
+        const foundPost = posts.find((post) => post.id === Number(id));
+        setPost(foundPost);
+        // 게시물이 업데이트될 때마다 초기값 설정
+        if (foundPost) {
+            setUpdatedTitle(foundPost.title);
+            setUpdatedContent(foundPost.content);
+        }
+    }, [post, id]);
 
     // 게시물 수정
     const [editMode, setEditMode] = useState(false);
-    const [updatedTitle, setUpdatedTitle] = useState(post.title);
-    const [updatedContent, setUpdatedContent] = useState(post.content);
+    const [updatedTitle, setUpdatedTitle] = useState('');
+    const [updatedContent, setUpdatedContent] = useState('');
     // 게시물 수정 이벤트 핸들러
     const handleEdit = () => {
         setEditMode(true);
@@ -39,9 +49,23 @@ function Post({ posts, deletePost }) {
         navigate('/');
     }
 
+    // 댓글 기능
+    const [comment, setComment] = useState('');
+
+    const handleCommentChange = e => {
+        setComment(e.target.value);
+    };
+
+    const handleCommentSubmit = e => {
+        e.preventDefault();
+        const newComment = { user: isLoggedIn ? currentUser : '익명', content: comment };
+        setComments([...comments, newComment]);
+        setComment('');
+    };
+
     // 게시물이 존재하지 않는 경우 처리
-    if (!post) {
-        return <alert>게시물을 찾을 수 없습니다.</alert>;
+    if (post === null) {
+        return <div>게시물을 찾을 수 없습니다.</div>;
     }
 
     return (
@@ -57,6 +81,19 @@ function Post({ posts, deletePost }) {
             )}
             <button onClick={handleDelete}>삭제</button>
             <button onClick={() => navigate('/')}>메인 페이지로 이동</button>
+            <h2>댓글</h2>
+            <form onSubmit={handleCommentSubmit}>
+                <input type="text" value={comment} onChange={handleCommentChange} />
+                <button type="submit">댓글 작성</button>
+            </form>
+            <ul>
+                {comments.map((comment, index) => (
+                    <li key={index}>
+                        {comment.user && <span>{comment.user}: </span>}
+                        {comment.content}
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 }

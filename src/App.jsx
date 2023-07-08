@@ -20,6 +20,8 @@ function App() {
     setPosts(posts.filter((post) => post.id !== postId));
   };
 
+  // 댓글
+  const [comments, setComments] = useState([]);
 
   // 로그인
   const [users, setUser] = useState([]);
@@ -41,7 +43,7 @@ function App() {
         <Route path="/login" element={<Login users={users} setIsLoggedIn={setIsLoggedIn} setCurrentUser={setCurrentUser} />} />
         <Route path="/signup" element={<Signup users={users} addUser={addUser} />} />
         <Route path="/new" element={<NewPost addPost={addPost} currentUser={currentUser} />} />
-        <Route path="/post/:id" element={<Post posts={posts} deletePost={deletePost} />} />
+        <Route path="/post/:id" element={<Post posts={posts} deletePost={deletePost} isLoggedIn={isLoggedIn} currentUser={currentUser} comments={comments} setComments={setComments} />} />
       </Routes>
       <Footer />
     </Router>
