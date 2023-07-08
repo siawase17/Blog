@@ -50,12 +50,12 @@ a:hover, a:active {
 }
 
 /* 로그인 */
-.login .form {
+.login .form, .signup .form {
   display: flex;
   flex-direction: column;
 }
 
-.form .email, .password {
+.login input, .signup input {
   padding: 0.3rem 2rem 0.3rem 0.7rem;
   margin-top: 0.3rem;
   margin-bottom: 0.7rem;
@@ -63,7 +63,7 @@ a:hover, a:active {
   border-radius: 0.8rem;
 }
 
-.form .submit {
+.login .submit, .signup .submit{
   width: 5rem;
   margin-top: 1rem;
   font-family: 'Gowun Dodum', sans-serif;
@@ -73,6 +73,6 @@ a:hover, a:active {
   border-width: 0.08rem;
 }
 
-.form .submit:hover {
+.login .submit:hover, .signup .submit:hover {
   color: #fbcff8;
 }

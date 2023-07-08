@@ -49,23 +49,27 @@ function Signup({ addUser, users }) {
     };
 
     return (
-        <div>
-            <h1>회원가입</h1>
-            <form onSubmit={handleSubmit}>
+        <div className='signup'>
+            <h1>Sign Up</h1>
+            <form className='form' onSubmit={handleSubmit}>
                 <label>
                     사용자 이름:
+                    <br />
                     <input type="name" value={userName} onChange={handleUseNameChange} />
                 </label>
                 <label>
                     이메일:
+                    <br />
                     <input type="email" value={email} onChange={handleEmailChange} />
                 </label>
                 <label>
                     비밀번호:
+                    <br />
                     <input type="password" value={password} onChange={handlePasswordChange} />
                 </label>
                 <label>
                     비밀번호 확인:
+                    <br />
                     <input type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
                 </label>
                 {existingError && (
@@ -74,7 +78,7 @@ function Signup({ addUser, users }) {
                 {passwordMismatch && (
                     <p style={{ color: 'red' }}>비밀번호가 일치하지 않습니다.</p>
                 )}
-                <button type="submit">회원가입</button>
+                <button className='submit' type="submit">회원가입</button>
             </form>
         </div>
     );

@@ -37,12 +37,12 @@ function Login({ users, setIsLoggedIn, setCurrentUser }) {
                 <label>
                     이메일:
                     <br />
-                    <input className='email' type="email" value={email} onChange={handleEmailChange} />
+                    <input type="email" value={email} onChange={handleEmailChange} />
                 </label>
                 <label>
                     비밀번호:
                     <br />
-                    <input className='password' type="password" value={password} onChange={handlePasswordChange} />
+                    <input type="password" value={password} onChange={handlePasswordChange} />
                 </label>
                 <button className='submit' type="submit">로그인</button>
             </form>
