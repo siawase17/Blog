@@ -31,18 +31,20 @@ function Login({ users, setIsLoggedIn, setCurrentUser }) {
     };
 
     return (
-        <div>
-            <h1>로그인</h1>
-            <form onSubmit={handleSubmit}>
+        <div className='login'>
+            <h1>Log In</h1>
+            <form className='form' onSubmit={handleSubmit}>
                 <label>
                     이메일:
-                    <input type="email" value={email} onChange={handleEmailChange} />
+                    <br />
+                    <input className='email' type="email" value={email} onChange={handleEmailChange} />
                 </label>
                 <label>
                     비밀번호:
-                    <input type="password" value={password} onChange={handlePasswordChange} />
+                    <br />
+                    <input className='password' type="password" value={password} onChange={handlePasswordChange} />
                 </label>
-                <button type="submit">로그인</button>
+                <button className='submit' type="submit">로그인</button>
             </form>
             <p>
                 아직 회원이 아니신가요? <Link to="/signup">회원가입</Link>

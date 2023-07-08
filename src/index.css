@@ -12,7 +12,6 @@ body {
   align-items: center;
   background-color: #fff6fb;
   font-family: 'Gowun Dodum', sans-serif;
-  caret-color: transparent;
 }
 
 a {
@@ -48,4 +47,32 @@ a:hover, a:active {
 
 .nav .newPost:hover {
   color : #fbcff8;
+}
+
+/* 로그인 */
+.login .form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form .email, .password {
+  padding: 0.3rem 2rem 0.3rem 0.7rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.7rem;
+  border-width: 0.07rem;
+  border-radius: 0.8rem;
+}
+
+.form .submit {
+  width: 5rem;
+  margin-top: 1rem;
+  font-family: 'Gowun Dodum', sans-serif;
+  font-size: 0.95rem;
+  background-color: white;
+  border-radius: 0.7rem;
+  border-width: 0.08rem;
+}
+
+.form .submit:hover {
+  color: #fbcff8;
 }
