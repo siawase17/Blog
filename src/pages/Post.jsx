@@ -59,9 +59,15 @@ function Post({ posts, deletePost, isLoggedIn, currentUser, comments, setComment
     const handleCommentSubmit = e => {
         e.preventDefault();
         const newComment = { user: isLoggedIn ? currentUser : '익명', content: comment, createdAt: new Date().toLocaleString() };
-        setComments([...comments, newComment]);
+        // 해당 게시물의 댓글만 업데이트
+        setComments(prevComments => {
+            const updatedComments = { ...prevComments, [id]: [...(prevComments[id] || []), newComment] };
+            return updatedComments;
+        });
         setComment('');
     };
+    // 해당 게시물의 댓글 가져오기
+    const postComments = comments[id] || [];
 
     // 게시물이 존재하지 않는 경우 처리
     if (post === null) {
@@ -87,10 +93,11 @@ function Post({ posts, deletePost, isLoggedIn, currentUser, comments, setComment
                 <button type="submit">댓글 작성</button>
             </form>
             <ul>
-                {comments.map((comment, index) => (
+                {postComments.map((comment, index) => (
                     <li key={index}>
                         {comment.user && <span>{comment.user}: </span>}
-                        {comment.content}
+                        {comment.content} 
+                        {comment.createdAt}
                     </li>
                 ))}
             </ul>
