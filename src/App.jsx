@@ -15,6 +15,12 @@ function App() {
     setPosts([...posts, newPost]);
   };
 
+  // 게시물 삭제
+  const deletePost = postId => {
+    setPosts(posts.filter((post) => post.id !== postId));
+  };
+
+
   // 로그인
   const [users, setUser] = useState([]);
   const addUser = (newUser) => {
@@ -33,9 +39,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home posts={posts} />} />
         <Route path="/login" element={<Login users={users} setIsLoggedIn={setIsLoggedIn} setCurrentUser={setCurrentUser} />} />
-        <Route path="/signup" element={<Signup addUser={addUser} />} />
-        <Route path="/new" element={<NewPost addPost={addPost} />} />
-        <Route path="/post/:id" element={<Post posts={posts} />} />
+        <Route path="/signup" element={<Signup users={users} addUser={addUser} />} />
+        <Route path="/new" element={<NewPost addPost={addPost} currentUser={currentUser} />} />
+        <Route path="/post/:id" element={<Post posts={posts} deletePost={deletePost} />} />
       </Routes>
       <Footer />
     </Router>

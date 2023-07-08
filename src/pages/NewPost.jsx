@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function NewPost({ addPost }) {
+function NewPost({ addPost, currentUser }) { 
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newPost = { id: Date.now(), title, content };
+        const newPost = { id: Date.now(), author: currentUser, createdAt: new Date(), title, content };
         addPost(newPost);
         navigate(`/`);
     };

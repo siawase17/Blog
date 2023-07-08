@@ -21,6 +21,7 @@ function Home( {posts} ) {
                         <Link to={`/post/${post.id}`}>
                             <h3>{post.title}</h3>
                             <p>{trimContent(post.content)}</p>
+                            <p>{post.createdAt.toDateString()}</p>
                         </Link>
                     </li>
                 ))}
