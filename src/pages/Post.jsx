@@ -96,6 +96,7 @@ function Post({ posts, deletePost, isLoggedIn, currentUser, comments, setComment
                     isLoggedIn && <button className='edit' onClick={handleEdit}>수정</button>
                 )}
                 {isLoggedIn && <button className='delete' onClick={handleDelete}>삭제</button>}
+                <br />
                 <button className='main' onClick={() => navigate('/')}>Home</button>
             </div>
 

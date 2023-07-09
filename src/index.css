@@ -148,7 +148,7 @@ a:hover, a:active {
 }
 
 .post .button {
-  padding-left: 38rem;
+  padding-left: 42rem;
 }
 
 .post .editContent {
@@ -166,6 +166,10 @@ a:hover, a:active {
 
 .post .line {
   border-top: 0.1rem solid #fbcff8;
+}
+
+.post .main {
+  padding-left: 8rem;
 }
 
 .comment .input {
