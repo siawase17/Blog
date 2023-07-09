@@ -32,8 +32,8 @@ function Login({ users, setIsLoggedIn, setCurrentUser }) {
 
     return (
         <div className='login'>
-            <h1>Log In</h1>
             <form className='form' onSubmit={handleSubmit}>
+                <h1>Log In</h1>
                 <label>
                     이메일:
                     <br />
@@ -45,10 +45,10 @@ function Login({ users, setIsLoggedIn, setCurrentUser }) {
                     <input type="password" value={password} onChange={handlePasswordChange} />
                 </label>
                 <button className='submit' type="submit">로그인</button>
-            </form>
-            <p>
+                <p>
                 아직 회원이 아니신가요? <Link to="/signup">회원가입</Link>
-            </p>
+                </p>
+            </form>
         </div>
     );
 }

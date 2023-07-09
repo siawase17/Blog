@@ -12,6 +12,9 @@ body {
   align-items: center;
   background-color: #fff6fb;
   font-family: 'Gowun Dodum', sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -33,6 +36,7 @@ a:hover, a:active {
 .nav .NewLogin {
   display: flex;
   margin-top: 0.6rem;
+  margin-right: 0rem;
 }
 
 .nav .logout {
@@ -60,6 +64,8 @@ a:hover, a:active {
 .login .form, .signup .form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .login input, .signup input {
@@ -207,4 +213,35 @@ a:hover, a:active {
 
 .single .userDate {
   font-size: 0.7rem;
+}
+
+/* 홈 게시물 목록 */
+.home .posts {
+  width: 55rem;
+  background-color: white;
+  border-radius: 3rem;
+  padding: 1rem 3rem 1rem 3rem;
+  list-style-type: none;
+}
+
+.home .line {
+  border-top: 0.1rem solid #fbcff8;
+}
+
+.home .createdAt {
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
+}
+
+.home .title {
+  margin-bottom: 0rem;
+}
+
+/* footer */
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
 }

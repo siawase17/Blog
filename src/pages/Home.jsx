@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 function Home( {posts} ) {
-    const MAX_CONTENT_LENGTH = 100; // 게시물 목록에 표시되는 내용 최대 길이
+    const MAX_CONTENT_LENGTH = 200; // 게시물 목록에 표시되는 내용 최대 길이
     const trimContent = content => {
         if (content.length <= MAX_CONTENT_LENGTH) {
             return content;
@@ -13,15 +13,18 @@ function Home( {posts} ) {
     }
 
     return (
-        <div>
-            <h3>게시물</h3>
-            <ul>
+        <div className='home'>
+            <ul className='posts'>
+                <h1 className='homestr'>Home</h1>
+                <p class="line"></p>
                 {posts.map((post) => (
                     <li key={post.id}>
+
                         <Link to={`/post/${post.id}`}>
-                            <h3>{post.title}</h3>
+                            <h3 className='title'>{post.title}</h3>
+                            <p className='createdAt'>{post.createdAt.toDateString()}</p>
                             <p>{trimContent(post.content)}</p>
-                            <p>{post.createdAt.toDateString()}</p>
+                            <p class="line"></p>
                         </Link>
                     </li>
                 ))}

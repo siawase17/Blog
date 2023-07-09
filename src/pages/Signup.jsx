@@ -50,8 +50,8 @@ function Signup({ addUser, users }) {
 
     return (
         <div className='signup'>
-            <h1>Sign Up</h1>
             <form className='form' onSubmit={handleSubmit}>
+                <h1>Sign Up</h1>
                 <label>
                     사용자 이름:
                     <br />
