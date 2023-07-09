@@ -23,7 +23,7 @@ function Navbar({ isLoggedIn, currentUser, handleLogout }) {
                 {isLoggedIn ? (
                     <p className="login">
                         <span>{currentUser}</span>
-                        <button onClick={handleLogout}>Logout</button>
+                        <button className='logout'onClick={handleLogout}>Logout</button>
                     </p>
                 ) : (
                     <p className="login">

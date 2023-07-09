@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import autosize from 'autosize';
 
-function NewPost({ addPost, currentUser }) { 
+function NewPost({ addPost, currentUser }) {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const navigate = useNavigate();
+
+    useEffect(() => {
+        autosize(document.querySelector('textarea')); // textarea에 autosize 적용
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,23 +27,25 @@ function NewPost({ addPost, currentUser }) {
     };
 
     return (
-        <div>
-            <h1>새 글 작성</h1>
-            <form onSubmit={handleSubmit}>
-                <label><input
-                        type="text"
-                        placeholder="제목"
-                        value={title}
-                        onChange={handleTitleChange}
-                    /></label>
-                <label><textarea
-                    placeholder="본문"
+        <div className='newpost'>
+            <h1>New post</h1>
+            <form className='form' onSubmit={handleSubmit}>
+                <input
+                    className='title'
+                    type="text"
+                    placeholder="Title"
+                    value={title}
+                    onChange={handleTitleChange}
+                />
+                <textarea
+                    className='content'
+                    placeholder="content"
                     value={content}
                     onChange={handleContentChange}
-                ></textarea></label>
-                <button type="submit">작성</button>
+                ></textarea>
+                <button className='submit' type="submit">작성</button>
             </form>
-            <button onClick={() => navigate('/')}>메인 페이지로 이동</button>
+            <button className='main' onClick={() => navigate('/')}>Home</button>
         </div>
     );
 }

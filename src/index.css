@@ -35,7 +35,14 @@ a:hover, a:active {
   margin-top: 0.6rem;
 }
 
-.nav .newPost {
+.nav .logout {
+  border: none;
+  background-color: #fff6fb;
+  font-family: 'Gowun Dodum', sans-serif;
+  font-size: 0.8rem;
+}
+
+.nav .newPost, .newpost .main {
   margin-right: 2rem;
   margin-top: 0.75rem;
   border: none;
@@ -45,17 +52,18 @@ a:hover, a:active {
   height: 2rem;
 }
 
-.nav .newPost:hover {
+.nav .newPost:hover, .nav .logout:hover, .newpost .main:hover {
   color : #fbcff8;
 }
 
-/* 로그인 */
+/* 로그인, 회원가입 */
 .login .form, .signup .form {
   display: flex;
   flex-direction: column;
 }
 
 .login input, .signup input {
+  font-family: 'Gowun Dodum', sans-serif;
   padding: 0.3rem 2rem 0.3rem 0.7rem;
   margin-top: 0.3rem;
   margin-bottom: 0.7rem;
@@ -63,7 +71,7 @@ a:hover, a:active {
   border-radius: 0.8rem;
 }
 
-.login .submit, .signup .submit{
+.login .submit, .signup .submit, .newpost .submit{
   width: 5rem;
   margin-top: 1rem;
   font-family: 'Gowun Dodum', sans-serif;
@@ -73,6 +81,41 @@ a:hover, a:active {
   border-width: 0.08rem;
 }
 
-.login .submit:hover, .signup .submit:hover {
+.login .submit:hover, .signup .submit:hover, .newpost .submit:hover {
   color: #fbcff8;
+}
+
+/* 새 게시물 작성 페이지 */
+.newpost .form {
+  display: flex;
+  flex-direction: column;
+}
+
+.newpost .title {
+  padding: 1rem 5rem 1rem 2rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Gowun Dodum', sans-serif;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 3rem;
+  outline: none;
+}
+
+.newpost .content {
+  padding: 2rem;
+  resize: none;
+  margin-bottom: 2rem;
+  font-family: 'Gowun Dodum', sans-serif;
+  font-size: 1rem;
+  border: none;
+  border-radius: 3rem;
+  outline: none;
+}
+
+.newpost .submit {
+  margin-left: 0.5rem;
+}
+
+.newpost .main {
+  margin-left: 0.3rem;
 }
