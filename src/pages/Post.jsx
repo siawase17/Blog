@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import autosize from 'autosize';
 
 function Post({ posts, deletePost, isLoggedIn, currentUser, comments, setComments }) {
     const navigate = useNavigate();
@@ -17,12 +18,19 @@ function Post({ posts, deletePost, isLoggedIn, currentUser, comments, setComment
             setUpdatedTitle(foundPost.title);
             setUpdatedContent(foundPost.content);
         }
-    }, [post, id]);
+    }, [id, posts]);
 
     // 게시물 수정
     const [editMode, setEditMode] = useState(false);
     const [updatedTitle, setUpdatedTitle] = useState('');
     const [updatedContent, setUpdatedContent] = useState('');
+    const contentTextareaRef = useRef(null);
+
+    useEffect(() => {
+        if (editMode) {
+            autosize(contentTextareaRef.current); // 수정 모드로 전환될 때 autosize 호출
+        }
+    }, [editMode]);
     // 게시물 수정 이벤트 핸들러
     const handleEdit = () => {
         setEditMode(true);
@@ -44,9 +52,11 @@ function Post({ posts, deletePost, isLoggedIn, currentUser, comments, setComment
 
     // 게시물 삭제 이벤트 핸들러
     const handleDelete = () => {
-        alert('게시물을 삭제하시겠습니까?');
-        deletePost(post.id);
-        navigate('/');
+        const confirmDelete = window.confirm('게시물을 삭제하시겠습니까?');
+        if (confirmDelete) {
+            deletePost(post.id);
+            navigate('/');
+        }
     }
 
     // 댓글 기능
@@ -75,29 +85,30 @@ function Post({ posts, deletePost, isLoggedIn, currentUser, comments, setComment
     }
 
     return (
-        <div>
-            <h1>{editMode ? <input value={updatedTitle} onChange={handleTitleChange} /> : post.title}</h1>
-            <p>작성자: {post.author}</p>
-            <p>작성일: {post.createdAt.toLocaleString()}</p>
-            <p>{editMode ? <textarea value={updatedContent} onChange={handleContentChange} /> : post.content}</p>
-            {editMode ? (
-                <button onClick={handleSave}>저장</button>
-            ) : (
-                <button onClick={handleEdit}>수정</button>
-            )}
-            <button onClick={handleDelete}>삭제</button>
-            <button onClick={() => navigate('/')}>메인 페이지로 이동</button>
-            <h2>댓글</h2>
-            <form onSubmit={handleCommentSubmit}>
-                <input type="text" value={comment} onChange={handleCommentChange} />
-                <button type="submit">댓글 작성</button>
+        <div className='post'>
+            <h1 className='title'>{editMode ? <input className='editTitle' value={updatedTitle} onChange={handleTitleChange} /> : post.title}</h1>
+            <p className='create'>{post.author} | {post.createdAt.toLocaleString()}</p>
+            <p className='content'>{editMode ? <textarea className='editContent' ref={contentTextareaRef} value={updatedContent} onChange={handleContentChange} /> : post.content}</p>
+            <div className='button'>
+                {isLoggedIn && editMode ? (
+                    <button className='save' onClick={handleSave}>저장</button>
+                ) : (
+                    isLoggedIn && <button className='edit' onClick={handleEdit}>수정</button>
+                )}
+                {isLoggedIn && <button className='delete' onClick={handleDelete}>삭제</button>}
+                <button className='main' onClick={() => navigate('/')}>Home</button>
+            </div>
+
+            <p class="line"></p>
+            <form className='comment' onSubmit={handleCommentSubmit}>
+                <textarea className='input' type="text" value={comment} onChange={handleCommentChange} />
+                <button className='submit' type="submit">댓글 작성</button>
             </form>
-            <ul>
+            <ul className='comments'>
                 {postComments.map((comment, index) => (
-                    <li key={index}>
-                        {comment.user && <span>{comment.user}: </span>}
-                        {comment.content} 
-                        {comment.createdAt}
+                    <li className='single' key={index}>
+                        {comment.user && <p className='userDate'>{comment.user} | {comment.createdAt}</p>}
+                        {comment.content}
                     </li>
                 ))}
             </ul>

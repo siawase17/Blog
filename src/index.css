@@ -42,7 +42,7 @@ a:hover, a:active {
   font-size: 0.8rem;
 }
 
-.nav .newPost, .newpost .main {
+.nav .newPost, .newpost .main, .post .main {
   margin-right: 2rem;
   margin-top: 0.75rem;
   border: none;
@@ -52,7 +52,7 @@ a:hover, a:active {
   height: 2rem;
 }
 
-.nav .newPost:hover, .nav .logout:hover, .newpost .main:hover {
+.nav .newPost:hover, .nav .logout:hover, .newpost .main:hover, .post .main:hover {
   color : #fbcff8;
 }
 
@@ -71,7 +71,7 @@ a:hover, a:active {
   border-radius: 0.8rem;
 }
 
-.login .submit, .signup .submit, .newpost .submit{
+.login .submit, .signup .submit, .newpost .submit, .post .save, .edit, .delete{
   width: 5rem;
   margin-top: 1rem;
   font-family: 'Gowun Dodum', sans-serif;
@@ -91,7 +91,7 @@ a:hover, a:active {
   flex-direction: column;
 }
 
-.newpost .title {
+.newpost .title, .post .editTitle {
   padding: 1rem 5rem 1rem 2rem;
   margin-bottom: 1.5rem;
   font-family: 'Gowun Dodum', sans-serif;
@@ -101,7 +101,7 @@ a:hover, a:active {
   outline: none;
 }
 
-.newpost .content {
+.newpost .content, .post .editContent {
   padding: 2rem;
   resize: none;
   margin-bottom: 2rem;
@@ -118,4 +118,93 @@ a:hover, a:active {
 
 .newpost .main {
   margin-left: 0.3rem;
+}
+
+/* 게시물 페이지 */
+.post .title {
+  width: 45rem;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+}
+
+.post .create {
+  padding-left: 1rem;
+  padding-bottom: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.post .content {
+  width: 54rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 2rem;
+  margin-bottom: 0rem;
+}
+
+.post .button {
+  padding-left: 38rem;
+}
+
+.post .editContent {
+  width: 50rem;
+}
+
+.post .save, .edit, .delete {
+  margin-right: 1rem;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+}
+
+.post .line {
+  border-top: 0.1rem solid #fbcff8;
+}
+
+.comment .input {
+  font-family: 'Gowun Dodum', sans-serif;
+  padding: 0.5rem 2rem 0.5rem 0.7rem;
+  margin-bottom: 0.7rem;
+  margin-right: 0.5rem;
+  border-width: 0.07rem;
+  border-radius: 0.8rem;
+  resize: none;
+  width: 20rem;
+  min-height: 5rem;
+}
+
+.comment .submit {
+  width: 6rem;
+  padding: 0.1rem;
+  margin-top: 0.3rem;
+  font-family: 'Gowun Dodum', sans-serif;
+  font-size: 0.95rem;
+  background-color: white;
+  border-radius: 0.7rem;
+  border-width: 0.08rem;
+}
+
+.comment .submit:hover,
+.post .save:hover,
+.post .edit:hover,
+.post .delete:hover {
+  color: #fbcff8;
+}
+
+.comments {
+  padding-left: 0rem;
+  padding-top: 1rem;
+}
+
+.comments .single {
+  background-color: white;
+  margin-bottom: 1rem;
+  border-radius: 2rem;
+  padding: 0.5rem 0.7rem 1rem 1.5rem;
+  list-style-type: none;
+}
+
+.single .userDate {
+  font-size: 0.7rem;
 }

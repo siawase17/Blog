@@ -73,10 +73,10 @@ function Signup({ addUser, users }) {
                     <input type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
                 </label>
                 {existingError && (
-                    <p style={{ color: 'red' }}>이미 존재하는 사용자 이름 또는 이메일입니다.</p>
+                    <p style={{ color: 'red' }}>이미 존재하는 사용자 이름 또는 이메일입니다</p>
                 )}
                 {passwordMismatch && (
-                    <p style={{ color: 'red' }}>비밀번호가 일치하지 않습니다.</p>
+                    <p style={{ color: 'red' }}>비밀번호가 일치하지 않습니다</p>
                 )}
                 <button className='submit' type="submit">회원가입</button>
             </form>
